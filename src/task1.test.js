@@ -2,27 +2,25 @@ import { code } from './prepareTestEnvironment.js'
 
 eval(code)
 
-describe('Task #1', () => {
-  test('myNum is defined and equals 10', () => {
-    expect(global.myNum).toBe(10)
+describe('userObj properties tests', () => {
+  // Перевірка наявності обов'язкових полів
+  test('userObj has required properties', () => {
+    expect(userObj).toHaveProperty('firstName')
+    expect(userObj).toHaveProperty('lastName')
+    expect(userObj).toHaveProperty('age')
   })
 
-  test('myStr is defined and equals "some string"', () => {
-    expect(global.myStr).toBe('some string')
+  // Перевірка типів даних для обов'язкових полів
+  test('firstName, lastName are strings; age is a number', () => {
+    expect(typeof userObj.firstName).toBe('string')
+    expect(typeof userObj.lastName).toBe('string')
+    expect(typeof userObj.age).toBe('number')
   })
 
-  test('myBool is defined and true', () => {
-    expect(global.myBool).toBe(true)
+  // Перевірка коректності значення віку
+  test('age is a valid number', () => {
+    expect(userObj.age).toBeGreaterThanOrEqual(0)
+    expect(userObj.age).toBeLessThanOrEqual(122)
   })
 
-  test('myArr is defined and matches expected array', () => {
-    expect(global.myArr).toEqual([1, 2, 3, 4, 5])
-  })
-
-  test('myObj is defined and matches expected object structure', () => {
-    expect(global.myObj).toEqual({
-      first: 'First Name',
-      last: 'Last Name'
-    })
-  })
 })

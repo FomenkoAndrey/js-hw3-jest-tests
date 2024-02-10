@@ -1,27 +1,25 @@
 import { code } from './prepareTestEnvironment.js'
+import { defUpperStr } from './main'
 
 eval(code)
 
-describe('Task #2: Check for prefix and postfix increments/decrements', () => {
-
-  // Перевірка на префіксний інкремент
-  test('Check for prefix increment', () => {
-    expect(code).toMatch(/\+\+i/)
+describe('defUpperStr function tests', () => {
+  // Перевірка коректності перетворення рядка у верхній регістр
+  test('correctly transforms text to uppercase', () => {
+    expect(defUpperStr('My text')).toBe('MY TEXT')
   })
 
-  // Перевірка на постфіксний інкремент
-  test('Check for postfix increment', () => {
-    expect(code).toMatch(/i\+\+/)
+  // Перевірка повернення тексту за замовчуванням, коли функція викликається без параметра
+  test('returns default text in uppercase when called without arguments', () => {
+    expect(defUpperStr()).toBe('DEFAULT TEXT')
   })
 
-  // Перевірка на префіксний декремент
-  test('Check for prefix decrement', () => {
-    expect(code).toMatch(/--i/)
+  // Перевірка на використання логічного оператора || і відсутність оператора if
+  test('uses logical OR operator and does not use if statement', () => {
+    const functionAsString = defUpperStr.toString()
+    // Перевірка на присутність ||
+    expect(functionAsString).toMatch(/\|\|/)
+    // Перевірка на відсутність if
+    expect(functionAsString).not.toMatch(/\bif\b/)
   })
-
-  // Перевірка на постфіксний декремент
-  test('Check for postfix decrement', () => {
-    expect(code).toMatch(/i--/)
-  })
-
 })

@@ -1,17 +1,17 @@
 import { code } from './prepareTestEnvironment.js'
+import { oddFn } from './main'
 
 eval(code)
 
-describe('Task #7: Check for the presence of text "рама" in strObj.str', () => {
-  test('Text "рама" is present in strObj.str', () => {
-    // Перевірка, що isRama вірно вказує на наявність тексту "рама"
-    expect(global.isRama).toBeTruthy()
+describe('oddFn function tests', () => {
+  test('generates array of odd numbers correctly', () => {
+    expect(oddFn(10)).toEqual([1, 3, 5, 7, 9])
+    expect(oddFn(15)).toEqual([1, 3, 5, 7, 9, 11, 13, 15])
+    expect(oddFn(20)).toEqual([1, 3, 5, 7, 9, 11, 13, 15, 17, 19])
   })
 
-  // Перевіряємо індекс входження
-  test('isRamaPos correctly indicates the position of "рама" or its presence', () => {
-    // Переконуємося, що результат не -1, що вказувало б на відсутність тексту "рама"
-    // Цей тест актуальний, якщо ви використовуєте indexOf
-    expect(global.strObj.str.indexOf('рама')).not.toBe(-1)
+  test('uses while loop', () => {
+    const functionAsString = oddFn.toString()
+    expect(functionAsString).toMatch(/\bwhile\b/)
   })
 })

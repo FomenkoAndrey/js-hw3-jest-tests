@@ -1,136 +1,312 @@
-console.log('#1. JavaScript homework example file')
+console.log('#3. JavaScript homework example file')
 
 /*
  * #1
  *
- * Створіть змінні зі значеннями.
+ * Створіть об'єкт userObj, що описує людину.
+ *
+ * Наступні поля обов'язкові:
+ * firstName - будь-яке ім'я, рядок
+ * lastName - будь-яке прізвище, рядок
+ * age - будь-який вік, число
  */
-var myNum = 10 // variable name: myNum, value: 10
-var myStr = 'some string' // variable name: myStr, value: 'some string'
-var myBool = true // variable name: myBool, value: true
-var myArr = [1, 2, 3, 4, 5] // variable name: myArr, value: 1, 2, 3, 4, 5
-var myObj = {
-  first: 'First Name',
-  last: 'Last Name'
-} // name of the variable myObj, value: first: 'First Name', last: 'Last Name'
 
-console.log('myNum: ', myNum)
-console.log('myStr:', myStr)
-console.log('myBool:', myBool)
-console.log('myArr:', myArr)
-console.log('myObj:', myObj)
+var userObj = {
+  age: 20,
+  firstName: 'John',
+  lastName: 'Smith',
+  fullName() {
+    return `${userObj.firstName} ${userObj.lastName}`
+  }
+}
+
+console.log(userObj)
 
 /*
  * #2
  *
- * Відформатуйте ціле число, яке зберігається в змінній myNum, щоб отримати результат з 2 знаками після коми.
- * Результат збережіть у змінній decimal2.
+ * Для об'єкта з п.1 створіть метод fullName(), що повертає коректне повне ім'я, яке є конкатенацією firstName та lastName через пробіл.
+
+ * Наприклад:
+ * userObj.firstName ← 'John'
+ * userObj.lastName  ← 'Smith'
+ * userObj.fullName() → 'John Smith'.
  */
-var decimal2 = myNum.toFixed(2)
+
+// ! Або одразу створюємо метод в об'єкті userObj, або додамо до об'єкту пізніше.
+// userObj.fullName = function () {
+//     return `${userObj.firstName} ${userObj.lastName}`
+//   }
+console.log(userObj.fullName()) // John Smith
 
 /*
  * #3
  *
- * Створіть змінну i, для якої виконайте префіксний та постфіксний інкремент та декремент.
- * Поекспериментуйте з результатами, виводячи їх у консоль.
+ * Функція defUpperStr('My text') повертає текст, перетворений у верхній регістр, тобто: defUpperStr('My text') → 'MY TEXT'.
+ *
+ * Якщо функція викликається без параметра defUpperStr(), вона не повинна повертати undefined, у цьому випадку потрібно повернути рядок тексту за замовчуванням у верхньому регістрі, тобто defUpperStr() → 'DEFAULT TEXT'.
+ *
+ * При виконанні завдання не використовуйте оператор if, потрібен розв'язок із логічним оператором ||.
  */
-var i = 0
 
-console.log('Префиксный инкремент:', ++i)
-console.log('Постфиксный инкремент:', i++)
-console.log('Значение i:', i)
-console.log('Префиксный декремент:', --i)
-console.log('Постфиксный декремент:', i--)
-console.log('Значение i:', i)
+function defUpperStr(str) {
+  return (str || 'Default text').toUpperCase()
+}
+
+console.log(defUpperStr('My text')) // MY TEXT
+console.log(defUpperStr())             // DEFAULT TEXT
 
 /*
  * #4
  *
- * Створіть нову змінну myTest та присвойте їй значення 20.
- * Виконайте присвоєння з операцією, використовуючи оператори: +=, –=, *=, /=, %=.
- * Результати присвоюються в myTest, потім виводяться в консоль.
- * У розрахунках можна використовувати раніше оголошену змінну myNum та/або числа.
+ * Створіть функцію evenFn(n), яка приймає параметром число - кількість ітерацій циклу, тобто for 0..n.
+ * Функція повинна повернути масив, що складається тільки з парних значень, які генеруються в циклі.
+ *
+ * Причому:
+ * 0 не повинен потрапляти до результуючого масиву,
+ * цикл має працювати до n включно,
+ * дозволено тільки оператор for.
+ *
+ * Наприклад:
+ * evenFn(10) → [2, 4, 6, 8, 10]
+ * evenFn(15) → [2, 4, 6, 8, 10, 12, 14]
+ * evenFn(20) → [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
  */
-var myTest = 20
 
-myTest += myNum
-console.log('+=', myTest)
+function evenFn(n) {
+  let arr = []
 
-myTest -= 10
-console.log('-=', myTest)
+  for (let i = 1; i <= n; i++) {
+    if (i % 2 === 0) {
+      // arr[arr.length] = i; // можливий варіант
+      arr.push(i) // кращий варіант
+    }
+  }
 
-myTest *= 2
-console.log('*=', myTest)
+  return arr
+}
 
-myTest /= myNum
-console.log('/=', myTest)
-
-myTest %= 3
-console.log('%=', myTest)
+console.log(evenFn(10)) // [2, 4, 6, 8, 10]
+console.log(evenFn(15)) // [2, 4, 6, 8, 10, 12, 14]
+console.log(evenFn(20)) // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
 /*
  * #5
  *
- * Використовуючи властивості та методи об'єкта Math, присвойте змінним та відобразіть у консолі.
+ * Створіть функцію weekFn(n), яка приймає номер дня тижня, а повертає його назву.
+ * Якщо вводиться рядок, будь-яке дробове число або число поза діапазоном 1...7 - функція повинна повернути null.
+ *
+ * Наприклад:
+ * 1   → 'Понеділок'
+ * 2   → 'Вівторок'
+ * ...
+ * 7   → 'Неділя'
+ * 9   → null
+ * 1.5 → null
+ * '2' → null
+ * У реалізації функції обов'язково мають бути використані оператори switch / case / default.
  */
-var myPi = Math.PI // constant Pi → myPi
-console.log('myPi:', myPi)
+function weekFn(cond) {
+  let str = ''
 
-var myRound = Math.round(89.279) // rounded value of 89.279 → myRound
-console.log('myRound:', myRound)
+  switch (cond) {
+    case 1:
+      str = 'Понеділок'
+      break
+    case 2:
+      str = 'Вівторок'
+      break
+    case 3:
+      str = 'Середа'
+      break
+    case 4:
+      str = 'Четвер'
+      break
+    case 5:
+      str = 'П\'ятниця'
+      break
+    case 6:
+      str = 'Субота'
+      break
+    case 7:
+      str = 'Неділя'
+      break
+    default:
+      str = null
+  }
 
-var myRandom = Math.random() * 10 // random number between 0..10 → myRandom
-console.log('myRandom:', myRandom)
+  return str
+}
 
-var myPow = Math.pow(3, 5) // 3 to the 5th power → myPow
-console.log('myPow:', myPow)
+console.log(weekFn(1))   // 'Понеділок'
+console.log(weekFn(3))   // 'Середа'
+console.log(weekFn(7))   // 'Неділя'
+console.log(weekFn(9))   // null
+console.log(weekFn(1.5)) // null
+console.log(weekFn('2')) // null
 
 /*
  * #6
  *
- * Створіть об'єкт з ім'ям strObj.
- * Присвойте ключу str рядок тексту "Мама мыла раму, рама мыла маму", ключу length встановіть довжину цього рядка.
+ * створіть функцію ageClassification(n), яка буде як параметр приймати будь-які числа і повертатиме рядок згідно з такими умовами, n:
+ * менше 0   - null (зверніть увагу, що це саме null, а не рядок)
+ * 0..24     - 'Дитинство'
+ * 24+...44  - 'Молодість'
+ * 44+..65   - 'Зрілість'
+ * 65+..75   - 'Старість'
+ * 75+..90   - 'Довголіття'
+ * 90+..122  - 'Рекорд'
+ * понад 122 - null (зверніть увагу, що це саме null, а не рядок)
+ *
+ * При виконанні завдання допускається використовувати тільки тернарний оператор ?.
+ * Використання операторів if, switch - заборонено.
  */
-var strObj = { str: 'Мама мыла раму, рама мыла маму' }
 
-strObj.length = strObj.str.length
-console.log('strObj = ', strObj)
+// function ageClassification(num) {
+//   return num >= 0
+//     ? num > 24
+//       ? num > 44
+//         ? num > 65
+//           ? num > 75
+//             ? num > 90
+//               ? num > 122
+//                 ? null
+//                 : 'Рекорд'
+//               : 'Довголіття'
+//             : 'Старість'
+//           : 'Зрілість'
+//         : 'Молодість'
+//       : 'Дитинство'
+//     : null
+// }
+
+// Можна покращити попередній варіант
+function ageClassification(num) {
+  return num < 0 ? null :
+    num <= 24 ? 'Дитинство' :
+      num <= 44 ? 'Молодість' :
+        num <= 65 ? 'Зрілість' :
+          num <= 75 ? 'Старість' :
+            num <= 90 ? 'Довголіття' :
+              num <= 122 ? 'Рекорд' : null
+}
+
+
+console.log('    -1 :', ageClassification(-1)) // -1 : null
+console.log('     0 :', ageClassification(0)) // 0 : null
+console.log('     1 :', ageClassification(1)) // 1 : Дитинство
+console.log('    24 :', ageClassification(24)) // 24 : Дитинство
+console.log(' 24.01 :', ageClassification(24.01)) // 24.01 : Молодість
+console.log('    44 :', ageClassification(44)) // 44 : Молодість
+console.log(' 44.01 :', ageClassification(44.01)) // 44.01 : Зрілість
+console.log('    65 :', ageClassification(65)) // 65 : Зрілість
+console.log('  65.1 :', ageClassification(65.1)) // 65.1 : Старість
+console.log('    75 :', ageClassification(75)) // 75 : Старість
+console.log(' 75.01 :', ageClassification(75.01)) // 75.01 : Довголіття
+console.log('    90 :', ageClassification(90)) // 90 : Довголіття
+console.log(' 90.01 :', ageClassification(90.01)) // 90.01 : Рекорд
+console.log('   122 :', ageClassification(122)) // 122 : Рекорд
+console.log('122.01 :', ageClassification(122.01)) // 122.01 : null
+console.log('   150 :', ageClassification(150)) // 150 : null
+
+/*
+ Блок тестирования, везде должны быть true:
+ console.log('    -1 :', ageClassification(-1) === null); // -1 : null
+ console.log('     0 :', ageClassification(0) === null) // 0 : null
+ console.log('     1 :', ageClassification(1) === 'Дитинство'); // 1 : Дитинство
+ console.log('    24 :', ageClassification(24) === 'Дитинство'); // 24 : Дитинство
+ console.log(' 24.01 :', ageClassification(24.01) === 'Молодість'); // 24.01 : Молодість
+ console.log('    44 :', ageClassification(44) === 'Молодість'); // 44 : Молодість
+ console.log(' 44.01 :', ageClassification(44.01) === 'Зрілість'); // 44.01 : Зрілість
+ console.log('    65 :', ageClassification(65) === 'Зрілість'); // 65 : Зрілість
+ console.log('  65.1 :', ageClassification(65.1) === 'Старість'); // 65.1 : Старість
+ console.log('    75 :', ageClassification(75) === 'Старість'); // 75 : Старість
+ console.log(' 75.01 :', ageClassification(75.01) === 'Довголіття'); // 75.01 : Довголіття
+ console.log('    90 :', ageClassification(90) === 'Довголіття'); // 90 : Довголіття
+ console.log(' 90.01 :', ageClassification(90.01) === 'Рекорд'); // 90.01 : Рекорд
+ console.log('   122 :', ageClassification(122) === 'Рекорд'); // 122 : Рекорд
+ console.log('122.01 :', ageClassification(122.01) === null); // 122.01 : null
+ console.log('   150 :', ageClassification(150) === null); // 150 : null
+*/
 
 /*
  * #7
  *
- * Перевірте наявність тексту 'рама' у полі str об'єкта strObj (див.п.6), результат збережіть у змінній isRamaPos та виведіть її у консоль.
- * Результатом для isRamaPos має бути індекс входження.
- * Результатом для isRama має бути буль true.
+ * Створіть функцію oddFn(n), яка приймає параметром число - кількість ітерацій циклу.
+ * Функція повинна повернути масив, що складається тільки з непарних значень, які генеруються в циклі.
+ *
+ * Причому:
+ * 0 не повинен потрапляти в результуючий масив,
+ * цикл має працювати до n включно,
+ * дозволено тільки оператор while.
+ *
+ * Наприклад:
+ * oddFn(10) → [1, 3, 5, 7, 9]
+ * oddFn(15) → [1, 3, 5, 7, 9, 11, 13, 15]
+ * oddFn(20) → [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
  */
-var isRamaPos = strObj.str.indexOf('рама')
-var isRama = strObj.str.includes('рама')
 
-console.log('isRamaPos:', isRamaPos)
-console.log('isRama:', isRama)
+function oddFn(n) {
+  let arr = []
+  let i = 0
+
+  while (i++ < n) if (i % 2 !== 0) arr.push(i)
+
+  return arr
+}
+
+console.log(oddFn(10)) // [1, 3, 5, 7, 9]
+console.log(oddFn(15)) // [1, 3, 5, 7, 9, 11, 13, 15]
+console.log(oddFn(20)) // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 
 /*
  * #8
  *
- * Виконайте перейменування підрядка у рядку.
- * Як вихідний рядок використовуйте значення поля str об'єкта strObj (див.п.6), результат збережіть у змінній strReplace та відобразіть у консолі.
- * Вихідний рядок: 'Мама мыла раму, рама мыла маму'
- *      Результат: 'Мама моет раму, Рама держит маму'
+ * Створіть основну функцію mainFunc(a, b, callback), яка приймає три параметри:
+ * a - число,
+ * b - число,
+ * callback - функція зворотнього виклику, що обробляє параметри a і b.
+ *
+ * Реалізуйте перевірку: якщо третім параметром передається не функція, потрібно повернути false.
  */
-var strReplace = strObj.str.replace('мыла', 'моет')
 
-strReplace = strReplace.replace('рама', 'Рама')
-strReplace = strReplace.replace('мыла', 'держит')
-console.log('strReplace:', strReplace)
+function mainFunc(a, b, cb) {
+  if (cb && typeof cb === 'function') return cb(a, b)
+
+  return false
+}
 
 /*
- * #9
- *
- * Преобразуйте текст 'some STRING' у верхній, потім у нижній регістри, результат відобразіть у консолі.
+ * Реалізуйте callback функції (cbRandom, cbPow, cbAdd) до основної функції (mainFunc), що повертатимуть відповідні результати обчислень.
+ * Використовуйте Math для піднесення до ступеня (Math.pow) та генерації випадкових чисел (Math.floor, Math.random).
  */
-var someStr = 'some STRING'
-var upperStr = someStr.toUpperCase()
-var lowerStr = someStr.toLowerCase()
 
-console.log(upperStr)
-console.log(lowerStr)
+// cbRandom(a, b) - обчислює і повертає довільне ціле число в діапазоні між a і b включно.
+function cbRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+// cbPow(a, b) - обчислює і повертає результат піднесення числа a у ступінь b.
+function cbPow(num, pow) {
+  return Math.pow(num, pow)
+}
+
+// cbAdd(a, b) - обчислює і повертає суму двох чисел a і b.
+function cbAdd(a, b) {
+  return a + b
+}
+
+/*
+ * mainFunc() повинна повертати результат роботи переданої їй поворотної функції, наприклад:
+ * mainFunc(2, 5, cbRandom) → випадково від 2 до 5 включно
+ * mainFunc(10, 30, cbRandom) → випадково 10..30 включно
+ * mainFunc(2, 5, cbPow) → 32
+ * mainFunc(2, 5, cbAdd) → 7
+ * mainFunc(2, 5, 'not a func') → false
+ */
+console.log(mainFunc(2, 5, cbRandom)) // цілі числа в діапазоні 2..5
+console.log(mainFunc(2, 5, cbPow)) // 32
+console.log(mainFunc(2, 5, cbAdd)) // 7
+console.log(mainFunc(2, 5, 'not a func')) // false
+
+export { defUpperStr, evenFn, weekFn, ageClassification, oddFn, mainFunc, cbRandom, cbPow, cbAdd }

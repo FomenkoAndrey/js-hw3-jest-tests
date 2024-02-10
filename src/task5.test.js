@@ -1,42 +1,33 @@
 import { code } from './prepareTestEnvironment.js'
+import { weekFn } from './main'
 
 eval(code)
 
-describe('Task #5: Math object usage', () => {
-  // Перевірка константи Pi
-  test('myPi is defined and equals Math.PI', () => {
-    expect(global.myPi).toBe(Math.PI)
-  })
-  // Перевірка на використання Math.PI
-  test('Code uses Math.PI', () => {
-    expect(code).toMatch(/Math\.PI/)
-  })
-
-  // Перевірка округлення числа 89.279
-  test('myRound is defined and correctly rounds 89.279', () => {
-    expect(global.myRound).toBe(Math.round(89.279))
-  })
-  // Перевірка на використання Math.round
-  test('Code uses Math.round', () => {
-    expect(code).toMatch(/Math\.round\(/)
+describe('weekFn function tests', () => {
+  test('correctly returns the day of the week for numbers 1 through 7', () => {
+    expect(weekFn(1)).toBe('Понеділок')
+    expect(weekFn(2)).toBe('Вівторок')
+    expect(weekFn(3)).toBe('Середа')
+    expect(weekFn(4)).toBe('Четвер')
+    expect(weekFn(5)).toBe('П\'ятниця')
+    expect(weekFn(6)).toBe('Субота')
+    expect(weekFn(7)).toBe('Неділя')
   })
 
-  // Перевірка на генерацію випадкового числа
-  test('myRandom is defined and is within the expected range 0 to 10', () => {
-    expect(global.myRandom).toBeGreaterThanOrEqual(0)
-    expect(global.myRandom).toBeLessThanOrEqual(10)
-  })
-  // Перевірка на використання Math.random
-  test('Code uses Math.random', () => {
-    expect(code).toMatch(/Math\.random\(\)/)
+  test('returns null for inputs outside the range 1...7, strings, or fractional numbers', () => {
+    expect(weekFn(9)).toBeNull()
+    expect(weekFn(8)).toBeNull()
+    expect(weekFn(11)).toBeNull()
+    expect(weekFn(1.5)).toBeNull()
+    expect(weekFn(3.01)).toBeNull()
+    expect(weekFn('2')).toBeNull()
+    expect(weekFn('str')).toBeNull()
   })
 
-  // Перевірка піднесення числа 3 до степеня 5
-  test('myPow is defined and correctly calculates 3 to the power of 5', () => {
-    expect(global.myPow).toBe(Math.pow(3, 5))
-  })
-  // Перевірка на використання Math.pow
-  test('Code uses Math.pow', () => {
-    expect(code).toMatch(/Math\.pow\(/)
+  test('uses switch, case, and default statements', () => {
+    const functionAsString = weekFn.toString()
+    expect(functionAsString).toMatch(/\bswitch\b/)
+    expect(functionAsString).toMatch(/\bcase\b/)
+    expect(functionAsString).toMatch(/\bdefault\b/)
   })
 })
