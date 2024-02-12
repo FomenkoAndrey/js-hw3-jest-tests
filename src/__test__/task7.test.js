@@ -1,5 +1,5 @@
 import { code } from './prepareTestEnvironment.js'
-import { oddFn } from './main'
+import { oddFn } from '../main'
 
 eval(code)
 

@@ -1,5 +1,5 @@
 import { code } from './prepareTestEnvironment.js'
-import { ageClassification } from './main'
+import { ageClassification } from '../main'
 
 eval(code)
 

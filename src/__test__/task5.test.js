@@ -1,5 +1,5 @@
 import { code } from './prepareTestEnvironment.js'
-import { weekFn } from './main'
+import { weekFn } from '../main'
 
 eval(code)
 
