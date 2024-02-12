@@ -1,4 +1,4 @@
-import { evenFn } from './main'
+import { evenFn } from '../main'
 import { code } from './prepareTestEnvironment'
 
 eval(code)

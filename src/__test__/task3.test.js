@@ -1,5 +1,5 @@
 import { code } from './prepareTestEnvironment.js'
-import { defUpperStr } from './main'
+import { defUpperStr } from '../main'
 
 eval(code)
 
