@@ -3,8 +3,6 @@ import { code } from './prepareTestEnvironment'
 
 eval(code)
 
-console.log(code)
-
 describe('evenFn function tests', () => {
   // Перевірка коректності результатів функції
   test('returns correct array of even numbers for n=10', () => {
