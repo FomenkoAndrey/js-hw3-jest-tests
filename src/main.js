@@ -37,7 +37,7 @@ console.log('#3. JavaScript homework example file')
  */
 
 // console.log(defUpperStr('My text')) // MY TEXT
-// console.log(defUpperStr())             // DEFAULT TEXT
+// console.log(defUpperStr())          // DEFAULT TEXT
 
 /*
  * #4
@@ -119,7 +119,7 @@ console.log('#3. JavaScript homework example file')
 // console.log('   150 :', ageClassification(150)) // 150 : null
 
 /*
- Блок тестирования, везде должны быть true:
+ Блок тестування, скрізь мають бути true:
  console.log('    -1 :', ageClassification(-1) === null); // -1 : null
  console.log('     0 :', ageClassification(0) === null) // 0 : null
  console.log('     1 :', ageClassification(1) === 'Дитинство'); // 1 : Дитинство
