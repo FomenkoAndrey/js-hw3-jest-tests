@@ -35,8 +35,8 @@ console.log(userObj)
 
 // ! Або одразу створюємо метод в об'єкті userObj, або додамо до об'єкту пізніше.
 // userObj.fullName = function () {
-//     return `${userObj.firstName} ${userObj.lastName}`
-//   }
+//   return `${userObj.firstName} ${userObj.lastName}`
+// }
 console.log(userObj.fullName()) // John Smith
 
 /*
@@ -210,7 +210,7 @@ console.log('122.01 :', ageClassification(122.01)) // 122.01 : null
 console.log('   150 :', ageClassification(150)) // 150 : null
 
 /*
- Блок тестирования, везде должны быть true:
+ Блок тестування, скрізь мають бути true:
  console.log('    -1 :', ageClassification(-1) === null); // -1 : null
  console.log('     0 :', ageClassification(0) === null) // 0 : null
  console.log('     1 :', ageClassification(1) === 'Дитинство'); // 1 : Дитинство
