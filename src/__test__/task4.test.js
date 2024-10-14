@@ -1,7 +1,4 @@
 import { evenFn } from '../main'
-import { code } from './prepareTestEnvironment'
-
-eval(code)
 
 describe('evenFn function tests', () => {
   // Перевірка коректності результатів функції

@@ -1,7 +1,4 @@
-import { code } from './prepareTestEnvironment.js'
 import { defUpperStr } from '../main'
-
-eval(code)
 
 describe('defUpperStr function tests', () => {
   // Перевірка коректності перетворення рядка у верхній регістр

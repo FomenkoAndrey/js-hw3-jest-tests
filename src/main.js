@@ -309,4 +309,4 @@ console.log(mainFunc(2, 5, cbPow)) // 32
 console.log(mainFunc(2, 5, cbAdd)) // 7
 console.log(mainFunc(2, 5, 'not a func')) // false
 
-export { defUpperStr, evenFn, weekFn, ageClassification, oddFn, mainFunc, cbRandom, cbPow, cbAdd }
+export { userObj, defUpperStr, evenFn, weekFn, ageClassification, oddFn, mainFunc, cbRandom, cbPow, cbAdd }

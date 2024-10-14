@@ -1,7 +1,4 @@
-import { code } from './prepareTestEnvironment.js'
 import { oddFn } from '../main'
-
-eval(code)
 
 describe('oddFn function tests', () => {
   test('generates array of odd numbers correctly', () => {
