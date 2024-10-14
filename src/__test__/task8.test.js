@@ -1,7 +1,4 @@
-import { code } from './prepareTestEnvironment.js'
 import { cbAdd, cbPow, cbRandom, mainFunc } from '../main'
-
-eval(code)
 
 describe('mainFunc function tests', () => {
   test('mainFunc correctly processes callbacks', () => {

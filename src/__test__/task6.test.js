@@ -1,7 +1,4 @@
-import { code } from './prepareTestEnvironment.js'
 import { ageClassification } from '../main'
-
-eval(code)
 
 describe('ageClassification function tests', () => {
   test('returns correct age classification', () => {

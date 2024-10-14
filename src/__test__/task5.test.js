@@ -1,7 +1,4 @@
-import { code } from './prepareTestEnvironment.js'
 import { weekFn } from '../main'
-
-eval(code)
 
 describe('weekFn function tests', () => {
   test('correctly returns the day of the week for numbers 1 through 7', () => {

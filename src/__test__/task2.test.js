@@ -1,6 +1,4 @@
-import { code } from './prepareTestEnvironment.js'
-
-eval(code)
+import { userObj } from '../main'
 
 describe('serObj method tests', () => {
   // Перевірка наявності методу fullName у об'єкті userOb
