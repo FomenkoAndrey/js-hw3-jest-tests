@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest'
 import { ageClassification } from '../main'
 
 describe('ageClassification function tests', () => {

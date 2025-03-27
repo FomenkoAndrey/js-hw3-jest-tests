@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest'
 import { defUpperStr } from '../main'
 
 describe('defUpperStr function tests', () => {

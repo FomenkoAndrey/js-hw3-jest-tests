@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest'
 import { userObj } from '../main'
 
 describe('userObj properties tests', () => {
