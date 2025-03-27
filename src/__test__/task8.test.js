@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest'
 import { cbAdd, cbPow, cbRandom, mainFunc } from '../main'
 
 describe('mainFunc function tests', () => {

@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest'
 import { evenFn } from '../main'
 
 describe('evenFn function tests', () => {

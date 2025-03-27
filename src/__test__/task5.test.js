@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest'
 import { weekFn } from '../main'
 
 describe('weekFn function tests', () => {
